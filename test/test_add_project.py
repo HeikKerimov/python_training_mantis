@@ -4,7 +4,7 @@ from generator.project import *
 
 def test_add_project(app):
 
-    project = Project("test", "stable", "private", "some text")
+    project = Project(name="test", status="stable", view_status="private", description="some text")
     old_projects = app.project.get_project_list()
     while project in old_projects:
         project.name = random_string(project.name, 4)

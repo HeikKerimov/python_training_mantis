@@ -1,3 +1,5 @@
+import time
+
 from model.project import Project
 
 
@@ -14,6 +16,14 @@ class ProjectHelper:
         wd.find_element_by_xpath("//input[@value='Create New Project']").click()
         self.fill_project_form(project)
         wd.find_element_by_xpath("//input[@value='Add Project']").click()
+        self.project_cache = None
+
+    def delete(self, name):
+        wd = self.app.wd
+        self.open_manage_project_page()
+        self.select_project_by_name(name)
+        wd.find_element_by_xpath("//input[@value='Delete Project']").click()
+        wd.find_element_by_xpath("//input[@value='Delete Project']").click()
         self.project_cache = None
 
     def fill_project_form(self, project):
@@ -39,6 +49,10 @@ class ProjectHelper:
         self.open_manage_page()
         if not (wd.current_url.endswith("/manage_proj_page.php") and len(wd.find_elements_by_xpath("//input[@value='Create New Project']")) > 0):
             wd.find_element_by_link_text("Manage Projects").click()
+
+    def select_project_by_name(self, name):
+        wd = self.app.wd
+        wd.find_element_by_link_text(name).click()
 
     def get_project_list(self):
         if self.project_cache is None:
