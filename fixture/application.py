@@ -1,6 +1,6 @@
 from selenium import webdriver
-from fixture.contact import ContactHelper
-from fixture.group import GroupHelper
+
+from fixture.project import ProjectHelper
 from fixture.session import SessionHelper
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -14,13 +14,11 @@ class Application:
             self.wd = webdriver.Chrome(ChromeDriverManager().install())
         elif browser == "safari":
             self.wd = webdriver.Safari()
-
         else:
             raise ValueError("Unrecognized browser %s" % browser)
 
         self.session = SessionHelper(self)
-        self.group = GroupHelper(self)
-        self.contact = ContactHelper(self)
+        self.project = ProjectHelper(self)
         self.base_url = base_url
 
     def is_valid(self):
