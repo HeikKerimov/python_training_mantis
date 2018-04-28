@@ -3,5 +3,10 @@
     "baseUrl" : "http://localhost/mantisbt-1.2.20",
     "username" : "administrator",
     "password" : "root"
+  },
+  "ftp": {
+    "host" : "localhost",
+    "username" : "mantis",
+    "password" : "mantis"
   }
 }
