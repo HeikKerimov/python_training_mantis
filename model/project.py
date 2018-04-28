@@ -11,3 +11,6 @@ class Project:
 
     def __eq__(self, other):
         return self.name == other.name and self.status == other.status and self.description == self.description
+
+    def get_name(self):
+        return self.name

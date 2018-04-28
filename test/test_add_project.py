@@ -5,11 +5,11 @@ from generator.project import *
 def test_add_project(app):
 
     project = Project(name="test", status="stable", view_status="private", description="some text")
-    old_projects = app.project.get_project_list()
+    old_projects = app.soap.get_project_list()
     while project in old_projects:
-        project.name = random_string(project.name, 4)
+        project.name = random_string(project.name, 5)
 
     app.project.create(project)
-    new_projects = app.project.get_project_list()
+    new_projects = app.soap.get_project_list()
     old_projects.append(project)
-    assert old_projects == new_projects
+    assert sorted(old_projects, key=Project.get_name) == sorted(new_projects, key=Project.get_name)

@@ -1,8 +1,8 @@
 from selenium import webdriver
-
 from fixture.project import ProjectHelper
 from fixture.session import SessionHelper
 from webdriver_manager.chrome import ChromeDriverManager
+from fixture.soap import SoapHelper
 
 
 class Application:
@@ -19,6 +19,7 @@ class Application:
 
         self.session = SessionHelper(self)
         self.project = ProjectHelper(self)
+        self.soap = SoapHelper(self)
         self.base_url = base_url
 
     def is_valid(self):
