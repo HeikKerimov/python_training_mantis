@@ -4,7 +4,7 @@ from model.project import Project
 
 
 def test_delete_project(app):
-    if len(app.project.get_project_list()) == 0:
+    if len(app.soap.get_project_list()) == 0:
         app.project.create(Project(name="test", status="stable", view_status="private", description="some text"))
 
     old_projects = app.soap.get_project_list()
